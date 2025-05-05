@@ -1,0 +1,111 @@
+:root {
+    --primary: #4e54c8;
+    --secondary: #8f94fb;
+    --bg: #f4f4f9;
+    --card-bg: #ffffff;
+    --error-color: #e74c3c;
+    --text-color: #333;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 600px;
+    width: 100%;
+    perspective: 4000px; /* para la sensación 3D */
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transform: rotateX(5deg) rotateY(-5deg);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  
+  #inputNumbers {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    resize: vertical;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  #processBtn {
+    padding: 10px 20px;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  #processBtn:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+  }
+  
+  .error {
+    color: var(--error-color);
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .result-card {
+    transform: rotateX(5deg) rotateY(5deg);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  @media (max-width: 600px) {
+    .card {
+      padding: 15px;
+    }
+    #processBtn {
+      width: 100%;
+    }
+  }
+  
