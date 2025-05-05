@@ -27,11 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const mode = modeSelect.value;
-    // Separa por comas o saltos de línea (\r\n o \n)
-    const tokens = raw
-      .split(/[\r?\n,]+/)
-      .map(t => t.trim())
-      .filter(t => t !== '');
+    const tokens = raw.split(/[,\r?\n]+/).map(t => t.trim()).filter(t => t !== '');
     const numberRegex = /^-?\d+$/;
     const nums = [];
     const words = [];
@@ -59,8 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    const uniqueNums = Array.from(new Set(nums)).sort((a, b) => a - b);
-    const uniqueWords = Array.from(new Set(words)).sort();
+    // Unicidad preservando orden de aparición
+    const uniqueNums = [];
+    const seenNums = new Set();
+    nums.forEach(n => {
+      if (!seenNums.has(n)) {
+        seenNums.add(n);
+        uniqueNums.push(n);
+      }
+    });
+    const uniqueWords = [];
+    const seenWords = new Set();
+    words.forEach(w => {
+      if (!seenWords.has(w)) {
+        seenWords.add(w);
+        uniqueWords.push(w);
+      }
+    });
 
     if (uniqueNums.length) {
       const tableNum = buildTable(uniqueNums, 'Números únicos');
