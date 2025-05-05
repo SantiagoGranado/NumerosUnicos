@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Números Únicos</title>
+  <title>Números y Palabras Únicos</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1 class="title">Números Únicos</h1>
+    <h1 class="title">Valores Únicos</h1>
     <div class="card">
-      <textarea id="inputNumbers" placeholder="Ingresa números separados por comas, espacios o líneas..." rows="5"></textarea>
+      <div class="mode-select">
+        <label for="mode">Modo:</label>
+        <select id="mode">
+          <option value="numbers">Solo números</option>
+          <option value="words">Solo palabras</option>
+          <option value="both">Números y palabras</option>
+        </select>
+      </div>
+      <textarea id="inputNumbers" placeholder="Ingresa valores separados por comas..." rows="5"></textarea>
       <button id="processBtn">Procesar</button>
       <div id="error" class="error"></div>
     </div>
